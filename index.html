@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,55 @@
     <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body onload="onInit()">
     <h1>Mine Sweeper </h1>
+
+    <div class="username">
+    </div> 
+    <div class="changeuserbtn">
+        <button onclick="changeUser()">Change User</button>
+      </div>
+      <div class="besttime">
+        Best time:
+      </div>
+
+    <button onclick="onRestart()" class="restartBtn"><img src="img/alien.png" alt="normal"></button>
+    <div class="heart heart3"></div>
+    <div class="heart heart2"></div>
+    <div class="heart heart1"></div>
+
     <div class="modal">
-        You Won!
+        <span> </span> 
         <button onclick="onInit()" class="restart">Restart</button>
     </div>
+    <br> <br><br><br>
+    <div class="levels">Choose level: <br>
+        <button  class="level4Btn" onclick="pickLevel(4,2)">Easy (16)</button>
+        <button  class="level5Btn" onclick="pickLevel(8,14)">Hard (64)</button>
+        <button  class="level6Btn" onclick="pickLevel(12,32)">Extreme (144)</button>
+    </div>
+    <div class="flags">⛳️ : <span>3</span> </div>
+    <div class="timer"></div>
+<div class="hints">
+    <button class="hint hint3" onclick="onHint(this)"><div  ><img src="img/hint.png" alt=""></div></button> 
+    <button class="hint hint2"  onclick="onHint(this)"><div ><img src="img/hint.png" alt=""></div></button> 
+    <button class="hint hint1"  onclick="onHint(this)"><div><img src="img/hint.png" alt=""></div></button> 
+
+</div>
+
+<br> 
     <table>
         <tbody class="board"></tbody>
     </table>
+    
+
+    <footer>
+        <h3>Dor Toledano</h3>
+    </footer>
 
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
