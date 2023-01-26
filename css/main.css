@@ -177,7 +177,7 @@ button.hint{
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid rgba(0,0,0,0);
     position: absolute;
-    top: 25%;
+    top: 20%;
 }
 
 .hint3{
@@ -213,6 +213,7 @@ button.hint{
 }
 
 .besttime{
+    display: inline;
     font-size: 1.5em;
     font-family:fantasy ;
     color: black;
