@@ -39,6 +39,7 @@ function onInit() {
     elHint.innerHTML = '<img src="img/hint.png">'
   }
   getUserName()
+  // changeUser()
   gLivesCount = gLevel.SIZE === 4 ? 2 : 3
   gGame.markedCount = gLevel.MINES
   updateFlagsCount(gGame.markedCount)
@@ -496,11 +497,11 @@ function OnDarkMode(){
   gDarkMode =!gDarkMode
   if(gDarkMode){
     document.querySelector('.darkModeBtn').innerText='Light Mode'
-    document.querySelector('body').style.backgroundImage='url(../img/candyLandDark.jpg)'
+    document.querySelector('body').style.backgroundImage="url('../img/candyLandDark.jpg')"
     document.querySelector('.gameContainer').style.backgroundColor= 'rgba(177, 132, 139, 0.676)'
   }  else{
     document.querySelector('.darkModeBtn').innerText='Dark Mode'
-     document.querySelector('body').style.backgroundImage='url(../img/candyLand.jpg)'
+     document.querySelector('body').style.backgroundImage="url('../img/candyLand.jpg')"
     document.querySelector('.gameContainer').style.backgroundColor= 'rgba(255, 192, 203, 0.676)'
     var elBtns= document.querySelectorAll('button')
   }
