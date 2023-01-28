@@ -168,11 +168,11 @@ function onCellMarked(event) {
 }
 
 function onCellClicked(elCell, i, j) {
-  if (gIsMegaHint) {
-    gLastClickPos={i,j}
-console.log({i,j});
-    return {i,j}
-  }
+//   if (gIsMegaHint) {
+//     gLastClickPos={i,j}
+// console.log({i,j});
+//     return {i,j}
+//   }
   // console.log('gGame',gGame)
   if (gIsHintOn && gBoard[i][j].isShown) {
     expandShown(gBoard, i, j)
