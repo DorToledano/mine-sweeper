@@ -286,6 +286,11 @@ function checkGameOver() {
     stopTimer()
     gTimeStamp2 = new Date()
     updateBestTime()
+    setTimeout(() => {
+      var audioGameOver = new Audio('sound/gameOver.mp3')
+      audioGameOver.volume = 0.2
+      audioGameOver.play()
+    }, 800);
   }
 }
 
@@ -505,7 +510,6 @@ function OnDarkMode(){
     //  document.querySelector('body').style.backgroundImage="url('../img/candyLand.jpg')"
      document.querySelector('body').style.backgroundImage="url(./img/candyLand.jpg)"
     document.querySelector('.gameContainer').style.backgroundColor= 'rgba(255, 192, 203, 0.676)'
-    var elBtns= document.querySelectorAll('button')
   }
 }
 
