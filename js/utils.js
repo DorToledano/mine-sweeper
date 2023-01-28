@@ -3,7 +3,9 @@
 var startTime = 0
 var endTime = 0
 var timerInterval = null
-
+var gSeconds 
+  var gMinutes 
+  var gHours 
 function createMat(ROWS, COLS) {
   var mat = []
   for (var i = 0; i < ROWS; i++) {
@@ -27,13 +29,11 @@ function renderCell(location, value) {
   elCell.innerHTML = value
 }
 
-
-
 function getEmptyLocation() {
   const emptyPoss = []
   for (let i = 0; i < gBoard.length; i++) {
     for (let j = 0; j < gBoard[0].length; j++) {
-      if (!gBoard[i][j].isMine) emptyPoss.push({ i, j })
+      if (!gBoard[i][j].isMine && !gBoard[i][j].isShown) emptyPoss.push({ i, j })
     }
   }
   if (!emptyPoss.length) return null
@@ -74,31 +74,34 @@ function updateTimer() {
   var elapsedTime = currentTime - startTime
 
   // format the elapsed time
-  var seconds = Math.floor(elapsedTime / 1000)
-  var minutes = Math.floor(seconds / 60)
-  var hours = Math.floor(minutes / 60)
+ gSeconds = Math.floor(elapsedTime / 1000)
+ gMinutes = Math.floor(gSeconds / 60)
+ gHours = Math.floor(gMinutes / 60)
+  // var seconds = Math.floor(elapsedTime / 1000)
+  // var minutes = Math.floor(seconds / 60)
+  // var hours = Math.floor(minutes / 60)
 
-  seconds = seconds % 60
-  minutes = minutes % 60
+  gSeconds = gSeconds % 60
+  gMinutes = gMinutes % 60
 
   // pad the minutes and seconds with leading zeros if necessary
-  if (minutes < 10) {
-    minutes = `0${minutes}`
+  if (gMinutes < 10) {
+    gMinutes = `0${gMinutes}`
   }
-  if (seconds < 10) {
-    seconds = `0${seconds}`
+  if (gSeconds < 10) {
+    gSeconds = `0${gSeconds}`
   }
 
   // get the timer element from the HTML page
   var timer = document.querySelector('.timer')
 
   // update the timer's text with the elapsed time
-  timer.innerText = `${hours}:${minutes}:${seconds}`
+  timer.innerText = `${gHours}:${gMinutes}:${gSeconds}`
 }
+
 function stopTimer() {
   // get the end time
   endTime = new Date()
-
   // clear the timer interval
   clearInterval(timerInterval)
 }
@@ -109,10 +112,10 @@ function addClassToCell(value, i, j) {
   elCell.classList.add(value)
   gBoard[i][j].isShown = true
   gGame.shownCount++
-  if (gBoard[i][j].minesAroundCount)
-    elCell.innerText = gBoard[i][j].minesAroundCount
+  if (gBoard[i][j].isMine) elCell.innerHTML =MINE_IMG
+  else if (gBoard[i][j].minesAroundCount) elCell.innerText = gBoard[i][j].minesAroundCount
 }
-function removeClassToCell(value, i, j) {
+function removeClassFromCell(value, i, j) {
   var cellSelector = '.' + getClassName({ i, j })
   var elCell = document.querySelector(cellSelector)
   elCell.classList.remove(value)
